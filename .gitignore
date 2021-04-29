@@ -15,7 +15,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+# lib/
 lib64/
 parts/
 sdist/
@@ -142,8 +142,8 @@ cython_debug/
 devel/
 logs/
 build/
-bin/
-lib/
+# bin/
+# lib/
 msg_gen/
 srv_gen/
 msg/*Action.msg
