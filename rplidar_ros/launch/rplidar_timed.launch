@@ -1,0 +1,17 @@
+<launch>
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="0"/>
+    <arg name="pkg" value="rplidar_ros"/>
+    <arg name="file" value="rplidar_front.launch"/>
+<!--    <arg name="value" value=""/> -->
+    <arg name="node_name" value="rplidar_front"/>
+  </include>
+
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="5"/>
+    <arg name="pkg" value="rplidar_ros"/>
+    <arg name="file" value="rplidar_rear.launch"/>
+<!--    <arg name="value" value=""/> -->
+    <arg name="node_name" value="rplidar_rear"/>
+  </include>
+</launch>
