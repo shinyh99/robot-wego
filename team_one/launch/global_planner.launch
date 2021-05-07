@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="global_planner" name="global_planner" type="planner" output="screen">
+    <!-- <param name="use_dijkstra" value="false"/> -->
+  </node>
+</launch>
