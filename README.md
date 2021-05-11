@@ -6,6 +6,12 @@
 
 ## Anckerman steering
 
+# Tips
+## rosbag
+`rosbag record --all "<name of bag file>"`
+`rosbag play <name of bag file>`
+
+# Scout
 ## How to run robot
 
 ### scout boot

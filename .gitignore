@@ -193,4 +193,4 @@ CATKIN_IGNORE
 
 # custom
 /CMakeLists.txt
-
+/team_one/bag/*.bag

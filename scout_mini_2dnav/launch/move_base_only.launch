@@ -15,6 +15,6 @@
     <!-- <param name="base_global_planner" type="string" value="voronoi_planner/VoronoiPlanner" /> -->
     <!-- <param name="base_local_planner" value="ftc_local_planner/FTCPlanner"/>	 -->
      
-    <remap from="odom" to="/odometry/filtered" />
+    <!-- <remap from="odom" to="/odometry/filtered" /> -->
   </node>
 </launch>
