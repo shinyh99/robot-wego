@@ -1,5 +1,4 @@
 <launch>
-
   <!-- front lidar on -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
     <arg name="time" value="0"/>
@@ -10,28 +9,25 @@
 
   <!-- rear lidar on -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="5"/>
+    <arg name="time" value="4"/>
     <arg name="pkg" value="rplidar_ros"/>
     <arg name="file" value="rplidar_rear.launch"/>
     <arg name="node_name" value="rplidar_rear"/>
   </include>
 
-<!--   
+  <!-- lidar filter -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
     <arg name="time" value="8"/>
     <arg name="pkg" value="team_one"/>
     <arg name="file" value="filter.launch"/>
     <arg name="node_name" value="filter"/>
-  </include> -->
+  </include>
 
   <!-- lidar merge -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="7"/>
+    <arg name="time" value="10"/>
     <arg name="pkg" value="team_one"/>
     <arg name="file" value="merge.launch"/>
     <arg name="node_name" value="merge"/>
   </include>
-
-  
-
 </launch>

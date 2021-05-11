@@ -1,0 +1,43 @@
+<launch>
+
+  <!-- scout on -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="0" />
+    <arg name="pkg" value="team_one" />
+    <arg name="file" value="scout.launch" />
+    <arg name="node_name" value="scout_on" />
+  </include>
+
+  <!-- lidar on -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="3"/>
+    <arg name="pkg" value="team_one"/>
+    <arg name="file" value="lidar.launch"/>
+    <arg name="node_name" value="lidar"/>
+  </include>
+
+  <!-- rviz -->
+  <arg name="rviz_file" default="$(find team_one)/rviz/path.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(arg rviz_file)" />
+
+  <!-- map -->
+  <arg name="map_file" default="$(find team_one)/map/cartographer_02.yaml"/>
+  <node name="map" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!-- move base -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="9"/>
+    <arg name="pkg" value="scout_mini_2dnav"/>
+    <arg name="file" value="move_base_only.launch"/>
+    <arg name="node_name" value="move_base_only"/>
+  </include>
+
+  <!-- amcl -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="9"/>
+    <arg name="pkg" value="scout_mini_2dnav"/>
+    <arg name="file" value="amcl.launch"/>
+    <arg name="node_name" value="amcl"/>
+  </include>
+</launch>
