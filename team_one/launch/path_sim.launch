@@ -1,0 +1,20 @@
+<launch>
+  <param name="use_sim_time" value="true"/>
+  
+  <!-- rviz -->
+  <arg name="rviz_file" default="$(find team_one)/rviz/path.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(arg rviz_file)" />
+
+  <!-- map -->
+  <arg name="map_file" default="$(find team_one)/map/cartographer_02_edit.yaml"/>
+  <node name="map" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!-- amcl -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="3"/>
+    <arg name="pkg" value="scout_mini_2dnav"/>
+    <arg name="file" value="amcl.launch"/>
+    <arg name="node_name" value="amcl"/>
+  </include>
+</launch>
