@@ -1,4 +1,7 @@
 <launch>
+  <!-- delete old parameters -->
+  <!-- <rosparam command="delete" param="/laser_filter"/> -->
+
   <!-- front lidar on -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
     <arg name="time" value="0"/>
@@ -9,25 +12,41 @@
 
   <!-- rear lidar on -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="3"/>
+    <arg name="time" value="2"/>
     <arg name="pkg" value="rplidar_ros"/>
-    <arg name="file" value="rplidar_rear.launch"/>
+    <arg name="file" value="rplidar_rear.launch"/>  
     <arg name="node_name" value="rplidar_rear"/>
   </include>
 
-  <!-- lidar filter -->
+  <!-- lidar dupliate filter -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="6"/>
+    <arg name="time" value="4"/>
     <arg name="pkg" value="team_one"/>
-    <arg name="file" value="filter.launch"/>
-    <arg name="node_name" value="filter"/>
+    <arg name="file" value="lidar_duplicate_filter.launch"/>
+    <arg name="node_name" value="lidar_duplicate_filter"/>
   </include>
 
   <!-- lidar merge -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="8"/>
+    <arg name="time" value="5"/>
     <arg name="pkg" value="team_one"/>
-    <arg name="file" value="merge.launch"/>
-    <arg name="node_name" value="merge"/>
+    <arg name="file" value="lidar_merge.launch"/>
+    <arg name="node_name" value="lidar_merge"/>
+  </include>
+
+  <!-- lidar back filter -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="6"/>
+    <arg name="pkg" value="team_one"/>
+    <arg name="file" value="lidar_back_filter.launch"/>
+    <arg name="node_name" value="lidar_back_filter"/>
+  </include>
+
+  <!-- lidar range filter -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="7"/>
+    <arg name="pkg" value="team_one"/>
+    <arg name="file" value="lidar_range_filter.launch"/>
+    <arg name="node_name" value="lidar_range_filter"/>
   </include>
 </launch>

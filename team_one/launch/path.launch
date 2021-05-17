@@ -36,7 +36,7 @@
   <!-- amcl -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
     <arg name="time" value="9"/>
-    <arg name="pkg" value="scout_mini_2dnav"/>
+    <arg name="pkg" value="team_one"/>
     <arg name="file" value="amcl.launch"/>
     <arg name="node_name" value="amcl"/>
   </include>

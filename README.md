@@ -40,3 +40,5 @@
 ## TF, odom, robot state publisher
 `roslaunch scout_sim bringup_simulator_robot.launch`
 
+## scan max range: 12.0
+## scan measured max range: 13.0

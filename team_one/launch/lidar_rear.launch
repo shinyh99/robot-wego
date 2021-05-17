@@ -1,9 +1,5 @@
 <launch>
-
   <include file="$(find rplidar_ros)/launch/rplidar_front.launch">
     <remap from="laser_f" to="scan"/> 
   </include>
-  
-
-
 </launch>

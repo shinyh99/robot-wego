@@ -1,15 +1,15 @@
 <launch>
   <!-- front laser scan -->
   <node pkg="laser_filters" type="scan_to_scan_filter_chain"
-      name="laser_filter_front">
-    <rosparam command="load" file="$(find team_one)/config/laser_front.yaml" />
+      name="laser_front_duplicate_filter">
+    <rosparam command="load" file="$(find team_one)/config/lidar_duplicate_filter.yaml" />
     <remap from="scan" to="laser_f/scan" />
     <remap from="scan_filtered" to="/laser_f/scan_filtered" />
   </node>
   <!-- rear laser scan -->
   <node pkg="laser_filters" type="scan_to_scan_filter_chain"
-      name="laser_filter_rear">
-    <rosparam command="load" file="$(find team_one)/config/laser_rear.yaml" />
+      name="laser_back_duplicate_filter">
+    <rosparam command="load" file="$(find team_one)/config/lidar_duplicate_filter.yaml" />
     <remap from="scan" to="laser_r/scan" />
     <remap from="scan_filtered" to="/laser_r/scan_filtered" />
   </node>
