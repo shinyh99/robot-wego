@@ -1,0 +1,30 @@
+<launch>
+  <!-- laser front intensity filter -->
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain"
+      name="lidar_front_intensity_filter_valid">
+    <rosparam command="load" file="$(find team_one)/config/lidar_intensity_filter_valid.yaml" />
+    <remap from="scan" to="/laser_f/scan_filtered" />
+    <remap from="scan_filtered" to="/laser_f/scan_intensity_valid" />
+  </node>
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain"
+      name="lidar_front_intensity_filter_inf">
+    <rosparam command="load" file="$(find team_one)/config/lidar_intensity_filter_inf.yaml" />
+    <remap from="scan" to="/laser_f/scan_filtered" />
+    <remap from="scan_filtered" to="/laser_f/scan_intensity_inf" />
+  </node>
+
+  <!-- laser rear intensity filter -->
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain"
+      name="lidar_rear_intensity_filter_valid">
+    <rosparam command="load" file="$(find team_one)/config/lidar_intensity_filter_valid.yaml" />
+    <remap from="scan" to="/laser_r/scan_filtered" />
+    <remap from="scan_filtered" to="/laser_r/scan_intensity_valid" />
+  </node>
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain"
+      name="lidar_rear_intensity_filter_inf">
+    <rosparam command="load" file="$(find team_one)/config/lidar_intensity_filter_inf.yaml" />
+    <remap from="scan" to="/laser_r/scan_filtered" />
+    <remap from="scan_filtered" to="/laser_r/scan_intensity_inf" />
+  </node>
+
+</launch>
