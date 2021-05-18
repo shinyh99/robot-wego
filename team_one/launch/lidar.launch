@@ -59,21 +59,23 @@
     <arg name="node_name" value="lidar_merge"/>
   </include>
 
-  <!-- lidar back filter -->
-  <!-- scan_all -> scan -->
-  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="8"/>
-    <arg name="pkg" value="team_one"/>
-    <arg name="file" value="lidar_back_filter.launch"/>
-    <arg name="node_name" value="lidar_back_filter"/>
-  </include>
-
   <!-- lidar range filter -->
   <!-- scan_all -> scan_range -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="9"/>
+    <arg name="time" value="8"/>
     <arg name="pkg" value="team_one"/>
     <arg name="file" value="lidar_range_filter.launch"/>
     <arg name="node_name" value="lidar_range_filter"/>
   </include>
+
+  <!-- lidar back filter -->
+  <!-- scan_range -> scan -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="9"/>
+    <arg name="pkg" value="team_one"/>
+    <arg name="file" value="lidar_back_filter.launch"/>
+    <arg name="node_name" value="lidar_back_filter"/>
+  </include>
 </launch>
+
+  
