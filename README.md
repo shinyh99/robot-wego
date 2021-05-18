@@ -42,3 +42,13 @@
 
 ## scan max range: 12.0
 ## scan measured max range: 13.0
+
+
+'21. 5. 18.(Tue)
+1. Waypoint setting (Programming)
+    - [younghwan] Destination setting
+    - [haneul] Path status check
+    - [hyungmin] Turn(scout_status) : odom, cmd_vel
+    - [haneul] Path setting(right or wrong check)
+    
+2. Laser Filter field testing
