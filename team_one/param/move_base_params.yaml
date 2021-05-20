@@ -27,16 +27,16 @@ aggressive_reset:
 
 stepback_and_steerturn_recovery:
   only_single_steering : false # default: false
-  trial_times: 3 # default: 3
-  obstacle_patience: 0.1 # default 0.3m
+  trial_times: 1 # default: 3
+  obstacle_patience: 0.05 # default 0.3m
   obstacle_check_frequency: 10.0 # default: 5.0
   sim_angle_resolution: 0.1 # default: 0.1
-  simulation_frequency: 10 # default: 5
+  simulation_frequency: 3 # default: 5
   linear_vel_back: -0.1 # default: -0.3
-  step_back_length: 0.2 # default: 1.0
-  step_back_timeout: 15.0 # default: 15.0
+  step_back_length: 0.1 # default: 1.0
+  step_back_timeout: 5.0 # default: 15.0
   linear_vel_steer: 0.1 # default: 0.3
   angular_speed_steer: 0.1 # default: 0.3
-  steering_timeout: 15.0 # default: 15.0
+  steering_timeout: 5.0 # default: 15.0
   linear_vel_forward: 0.1 # default: 0.3
-  step_forward_timeout: 15.0 # default: 15.0
+  step_forward_timeout: 5.0 # default: 15.0

@@ -34,11 +34,20 @@ from std_srvs.srv import Empty
 
 GoalPlan = [
     # [turn_in_degree, time_in_sleep]
-    [-90, 5.0],
-    [-180, 1.0],
-    [90, 0.0],
-    [0, 2.0],
-    [90, 10.0],
+    ##scenario 1
+    # [-180, 1.0], # end of hall
+    # [90, 1.0], # info front
+    # [45, 1.0], # end
+    # [90, 1.0] # back to init
+    
+
+    ##scenario 2   
+    [-140, 1.0], # room parking
+    [-180, 1.0], # end of hall
+    [-180, 1.0], # info desk
+    [45, 1.0], # end
+    [90, 1.0] # back to init 
+
 ]
 
 

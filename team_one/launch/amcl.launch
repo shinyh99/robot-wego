@@ -6,9 +6,9 @@
   <arg name="use_map_topic" default="true"/>
   <arg name="scan_topic"  default="/scan" />
   
-  <arg name="initial_pose_x" value="-3.6016"/>
-  <arg name="initial_pose_y" value="-10.409"/>
-  <arg name="initial_pose_a" value="1.5570776"/>
+  <arg name="initial_pose_x" value="4.8555"/>
+  <arg name="initial_pose_y" value="0.3503"/>
+  <arg name="initial_pose_a" value="1.5261"/>
 
   <node pkg="amcl" type="amcl" name="amcl" clear_params="true" output="screen">
     <param name="use_map_topic" value="$(arg use_map_topic)"/>
