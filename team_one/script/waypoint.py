@@ -42,9 +42,10 @@ GoalPlan = [
     
 
     ##scenario 2   
-    [-140, 1.0], # room parking
-    [-180, 1.0], # end of hall
-    [-180, 1.0], # info desk
+    [-90, 1.0], # room parking before door
+    [-140, 5.0], # room parking
+    [-180, 5.0], # end of hall
+    [-180, 5.0], # info desk
     [45, 1.0], # end
     [90, 1.0] # back to init 
 
