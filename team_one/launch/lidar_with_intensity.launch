@@ -30,28 +30,39 @@
     <arg name="node_name" value="lidar_duplicate_filter"/>
   </include>
 
-  <!-- lidar merge -->
-  <!-- /laser_f/scan_filtered /laser_r/scan_filtered -> scan_all -->
+  <!-- lidar intensity filter -->
+  <!-- /laser_f/scan_filtered -> /laser_f/scan_intensity_valid, /laser_f/scan_intensity_inf -->
+  <!-- /laser_r/scan_filtered -> /laser_r/scan_intensity_valid, /laser_r/scan_intensity_inf -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
     <arg name="time" value="5"/>
+    <arg name="pkg" value="team_one"/>
+    <arg name="file" value="lidar_intensity_filter.launch"/>
+    <arg name="node_name" value="lidar_intensity_filter"/>
+  </include>
+
+  <!-- lidar intensity merge -->
+  <!-- /laser_f/scan_intensity_valid, /laser_f/scan_intensity_inf -> /laser_f/scan_intensity -->
+  <!-- /laser_r/scan_intensity_valid, /laser_r/scan_intensity_inf -> /laser_r/scan_intensity-->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="6"/>
+    <arg name="pkg" value="team_one"/>
+    <arg name="file" value="lidar_intensity_merge.launch"/>
+    <arg name="node_name" value="lidar_intensity_merge"/>
+  </include>
+
+  <!-- lidar merge -->
+  <!-- /laser_f/scan_intensity /laser_r/scan_intensity -> scan_all -->
+  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
+    <arg name="time" value="7"/>
     <arg name="pkg" value="team_one"/>
     <arg name="file" value="lidar_merge.launch"/>
     <arg name="node_name" value="lidar_merge"/>
   </include>
 
-   <!-- lidar speckle filter -->
-  <!-- scan_all -> scan_speckle -->
-  <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="6"/>
-    <arg name="pkg" value="team_one"/>
-    <arg name="file" value="lidar_speckle_filter.launch"/>
-    <arg name="node_name" value="lidar_speckle_filter"/>
-  </include>
-
   <!-- lidar range filter -->
-  <!-- scan_speckle -> scan_range -->
+  <!-- scan_all -> scan_range -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="7"/>
+    <arg name="time" value="8"/>
     <arg name="pkg" value="team_one"/>
     <arg name="file" value="lidar_range_filter.launch"/>
     <arg name="node_name" value="lidar_range_filter"/>
@@ -60,9 +71,11 @@
   <!-- lidar back filter -->
   <!-- scan_range -> scan -->
   <include file="$(find timed_roslaunch)/launch/timed_roslaunch.launch">
-    <arg name="time" value="8"/>
+    <arg name="time" value="9"/>
     <arg name="pkg" value="team_one"/>
     <arg name="file" value="lidar_back_filter.launch"/>
     <arg name="node_name" value="lidar_back_filter"/>
   </include>
 </launch>
+
+  
