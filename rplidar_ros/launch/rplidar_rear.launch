@@ -7,7 +7,7 @@
     <param name="frame_id"            type="string" value="laser_r"/>
     <param name="inverted"            type="bool"   value="true"/>
     <param name="angle_compensate"    type="bool"   value="true"/>
-    <param name="scan_mode" type="string" value="Standard"/>
+    <param name="scan_mode" type="string" value="Express"/>
     </node>
 
     <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser_broadcaster_r" args="-0.1825 0.0 0.29 0.0 0.0 0.0 base_link laser_r 50" />

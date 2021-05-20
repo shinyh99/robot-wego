@@ -1,0 +1,29 @@
+<launch>
+
+<!-- MoveBaseSeq node launch and Points Sequence ROS Parameters Loading -->
+
+    <!--Run move_base_seqs node-->
+        <node pkg="team_one" type="waypoint.py" name="waypoint" output="screen">
+        
+            <!-- Load Sequence of Points (Cartesian Coordinates wrt "map" RF, in meters) -->
+            <!-- p_seq = [x1,y1,z1,x2,y2,z2,...xn,yn,zn]  -->
+            <rosparam param="p_seq">[
+            4.45, -0.07, 0.0,
+            19.9, 0.6, 0.0,
+            -11.2, 0.69, 0.0,
+            -8.56, -10.2, 0.0,
+            -3.644, -10.15, 0.0
+            ]</rosparam>
+            <!-- Load Sequence of Desired Yaw Angles (no rotations around x and y axes) in degrees-->
+            <!-- yea_seq = [yaw1,yaw2,yaw3] -->
+            <rosparam param="quat_seq">[
+            0.0, 0.0, 0.701, 0.713,
+            0.0, 0.0, 0.02, 0.99,
+            0.0, 0.0, 0.99, 0.01,
+            0.0, 0.0, -0.054, 0.998,
+            0.0, 0.0, 0.0, 1.0
+            ]</rosparam>
+
+        </node>
+
+</launch>
