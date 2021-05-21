@@ -36,18 +36,18 @@ GoalPlan = [
     # [turn_in_degree, time_in_sleep]
 
     ## scenario 1
-    [-180, 1.0], # end of hall
-    [90, 1.0], # info front
-    [45, 1.0], # end
-    [90, 1.0] # back to init
+    # [-180, 1.0], # end of hall
+    # [90, 1.0], # info front
+    # [45, 1.0], # end
+    # [90, 1.0] # back to init
 
     ## scenario 2   
     # [-90, 1.0], # new room parking before door
     # [-180, 5.0], # new room parking
-    # [-180, 5.0], # new end of hall
-    # [-180, 5.0], # new info desk
-    # [45, 1.0], # end
-    # [90, 1.0] # back to init 
+    [-180, 5.0], # new end of hall
+    [-180, 5.0], # new info desk
+    [45, 1.0], # end
+    [90, 1.0] # back to init 
 
 ]
 
@@ -114,7 +114,7 @@ class MoveBaseSeq:
         except rospy.ServiceException as e:
             rospy.logwarn("clear_costmap call failed: %s" % e)
 
-    def request_nomotion_update(self):
+    def amcl_update(self):
         rospy.wait_for_service("/request_nomotion_update")
         rospy.loginfo("amcl update")
 
@@ -185,10 +185,10 @@ class MoveBaseSeq:
                 if abs(heading_diff) >= 7.5 * pi / 180:
                     self.cmd_vel = Twist()
                     if rad >= 0:
-                        self.cmd_vel.angular.z = 0.5
+                        self.cmd_vel.angular.z = 0.4
 
                     else:
-                        self.cmd_vel.angular.z = -0.5
+                        self.cmd_vel.angular.z = -0.4
 
                 else:
                     self.cmd_vel.angular.z = 0.0
@@ -228,9 +228,20 @@ class MoveBaseSeq:
         self.sleep(time_to_sleep)
         self.turn(degree_to_turn)
         
-        self.request_nomotion_update()
-        self.request_nomotion_update()
+        self.amcl_update()
+        self.sleep(0.5)
+        self.amcl_update()
+        self.sleep(0.5)
         self.clear_costmaps()
+        # if goal_no == 0:
+        #     self.amcl_update()
+        #     self.sleep(0.5)
+        #     self.amcl_update()
+        #     self.amcl_update()
+        #     self.sleep(0.5)
+        #     self.amcl_update()
+        #     self.sleep(0.5)
+
 
     def active_cb(self):
         rospy.loginfo(
@@ -328,11 +339,11 @@ class MoveBaseSeq:
         self.client.send_goal(
             goal, self.done_cb, self.active_cb, self.feedback_cb
         )
-        rate = rospy.Rate(0.2)
+        rate = rospy.Rate(0.1)
 
         pub_pose_array = rospy.Publisher("waypoint", PoseArray, queue_size=1)
         while not rospy.is_shutdown():
-            self.clear_costmaps()
+            # self.clear_costmaps()
             pub_pose_array.publish(self.pose_array)
             rate.sleep()
         rospy.spin()

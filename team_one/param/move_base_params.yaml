@@ -10,8 +10,8 @@ oscillation_distance: 0.2
 recovery_behaviors:
   - name: 'aggressive_reset'
     type: 'clear_costmap_recovery/ClearCostmapRecovery'
-  - name: stepback_and_steerturn_recovery
-    type: stepback_and_steerturn_recovery/StepBackAndSteerTurnRecovery
+  # - name: stepback_and_steerturn_recovery
+  #   type: stepback_and_steerturn_recovery/StepBackAndSteerTurnRecovery
   # - name: 'conservative_reset'
   #   type: 'clear_costmap_recovery/ClearCostmapRecovery'
   # - name: 'rotate_recovery'
