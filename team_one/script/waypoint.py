@@ -34,20 +34,20 @@ from std_srvs.srv import Empty
 
 GoalPlan = [
     # [turn_in_degree, time_in_sleep]
-    ##scenario 1
-    # [-180, 1.0], # end of hall
-    # [90, 1.0], # info front
-    # [45, 1.0], # end
-    # [90, 1.0] # back to init
-    
 
-    ##scenario 2   
-    [-90, 1.0], # room parking before door
-    [-140, 5.0], # room parking
-    [-180, 5.0], # end of hall
-    [-180, 5.0], # info desk
+    ## scenario 1
+    [-180, 1.0], # end of hall
+    [90, 1.0], # info front
     [45, 1.0], # end
-    [90, 1.0] # back to init 
+    [90, 1.0] # back to init
+
+    ## scenario 2   
+    # [-90, 1.0], # new room parking before door
+    # [-180, 5.0], # new room parking
+    # [-180, 5.0], # new end of hall
+    # [-180, 5.0], # new info desk
+    # [45, 1.0], # end
+    # [90, 1.0] # back to init 
 
 ]
 
@@ -99,12 +99,6 @@ class MoveBaseSeq:
             rospy.signal_shutdown("Action server not available!")
             return
         rospy.loginfo("Connected to move base server")
-
-        # self.goal_reached_action(0)
-        # self.goal_reached_action(1)
-        # self.goal_reached_action(2)
-        # self.goal_reached_action(3)
-        # self.goal_reached_action(4)
 
         self.movebase_client()
 
@@ -231,9 +225,9 @@ class MoveBaseSeq:
         (degree_to_turn, time_to_sleep) = GoalPlan[goal_no]
         print(degree_to_turn, time_to_sleep)
 
-        self.turn(degree_to_turn)
         self.sleep(time_to_sleep)
-
+        self.turn(degree_to_turn)
+        
         self.request_nomotion_update()
         self.request_nomotion_update()
         self.clear_costmaps()
